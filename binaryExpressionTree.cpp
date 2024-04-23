@@ -153,7 +153,19 @@ double binaryExpressionTree::evaluateExpressionTree(nodeType<string>* p) {
         double x = evaluateExpressionTree(p->lLink);
         double y = evaluateExpressionTree(p->rLink);
         double result = 0.0;
-        if()
+        if (p->info == "+") {
+            result = x + y;
+        }
+        else if (p->info == "-") {
+            result = x - y; 
+        }
+        else if (p->info == "*") {
+            result = x * y;
+        }
+        else if (p->info == "/") {
+            result = x / y;
+        }
+        return result;
     }
 }
 double binaryExpressionTree::evaluateExpressionTree() {
