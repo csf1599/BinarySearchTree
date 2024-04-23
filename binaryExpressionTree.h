@@ -10,7 +10,7 @@ private:
 public:
 	void buildExpressionTree(string);
 	double evaluateExpressionTree();
-	bool search(const string&);
+	bool search(const string&) const;
 	void insert(const string&);
 	void deleteNode(const string&);
 };

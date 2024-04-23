@@ -52,29 +52,79 @@
 //Get the next token
 // 
 //if stack is not empty
+//
+//pop expression tree from stack and store in root
+//
+//if stack is not empty
+//
+//error set root back to null
 
 void binaryExpressionTree::buildExpressionTree(string postfix) {
-	stack<nodeType<string>*> nodeStack;
+    stack<nodeType<string>*> nodeStack;
 
-	char* expression = new char[postfix.length() + 1];
+    char* expression = new char[postfix.length() + 1];
+    strcpy(expression, postfix.c_str());
 
-	strcpy(expression, postfix.c_str());
+    char* token = strtok(expression, " ");
+    do {
+        if (isdigit(token[0])) {
+            string tokenStr(token);
+            nodeType<string>* newNode = new nodeType<string>;
+            newNode->info = tokenStr;
+            newNode->lLink = newNode->rLink = nullptr;
+            nodeStack.push(newNode);
+        }
+        else if (strcmp(token, "+") == 0 || strcmp(token, "-") == 0 || strcmp(token, "*") == 0 || strcmp(token, "/") == 0) {
+            string tokenStr(token);
+            nodeType<string>* newNode = new nodeType<string>;
+            newNode->info = tokenStr;
+            if (!nodeStack.empty()) {
+                newNode->rLink = nodeStack.top();
+                nodeStack.pop();
+            }
+            else {
+                cout << "Error - Stack is empty" << endl;
+                return; 
+            }
+            if (!nodeStack.empty()) {
+                newNode->lLink = nodeStack.top();
+                nodeStack.pop();
+            }
+            else {
+                cout << "Error - Stack is empty" << endl;
+                return;
+            }
+            nodeStack.push(newNode);
+        }
+        else {
+            cout << "Invalid token type: " << token << endl;
+            return;
+        }
+        token = strtok(nullptr, " ");
+    } while (token != nullptr);
 
-	char* token = strtok(expression, " ");
+    if (nodeStack.empty()) {
+        cout << "Error - Stack is empty" << endl;
+        root = nullptr; 
+        return;
+    }
 
-	while (token != nullptr) {
-		if (isdigit(token[0])) {
-			nodeType<string>* newNode = new nodeType<string>;
-			string token_string(token);
-			newNode->info = token_string;
-			nodeStack.push(newNode);
-		}
-		else if (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/') {
+    root = nodeStack.top();
+    nodeStack.pop();
 
-		}
-	}
+    if (!nodeStack.empty()) {
+        cout << "Error - Stack is not empty" << endl;
+        root = nullptr;
+    }
+}
 
-
-
-
+void binaryExpressionTree::deleteNode(const string& string) {
+    cout << "What am I doing";
+}
+void binaryExpressionTree::insert(const string& string) {
+    cout << "I dont know";
+}
+bool binaryExpressionTree::search(const string& string) const {
+    cout << "Still lost";
+    return true;
 }
