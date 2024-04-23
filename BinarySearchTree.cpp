@@ -8,10 +8,7 @@ int main()
     binaryExpressionTree tree;
 
     tree.buildExpressionTree(" 3 7 + 14 * ");
-
-    cout << "Inorder traversal: ";
-    tree.inorderTraversal();
-    cout << endl;
+    cout << tree.evaluateExpressionTree() << endl;
 }
 
 

@@ -1,4 +1,5 @@
 #include "binaryExpressionTree.h"
+#include <string>
 //Get a postfix expression(this will be an input to the evaluateExpressionTree function)
 // 
 //Convert the string to a character array(include <cstring>)
@@ -127,4 +128,10 @@ void binaryExpressionTree::insert(const string& string) {
 bool binaryExpressionTree::search(const string& string) const {
     cout << "Still lost";
     return true;
+}
+double binaryExpressionTree::evaluateExpressionTree(nodeType<string>* p) {
+
+}
+double binaryExpressionTree::evaluateExpressionTree() {
+    return evaluateExpressionTree(root);
 }
