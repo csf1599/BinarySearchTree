@@ -129,8 +129,32 @@ bool binaryExpressionTree::search(const string& string) const {
     cout << "Still lost";
     return true;
 }
-double binaryExpressionTree::evaluateExpressionTree(nodeType<string>* p) {
 
+//(p is a pointer to a node
+//    x is the left operand of an expression
+//    y is the right operand of an expression
+//    op is the operator
+//    The function, evaluate(p) is recursive)
+//    if p is a leaf then
+//        return the value stored at p(value is stored as a string, convert to double using stod()
+//            before returning)
+//    else
+//        op is the info field of p
+//        x = evaluate(left(p))
+//        y = evaluate(right(p))
+//        Evaluate the expression x op y and return the result
+
+
+double binaryExpressionTree::evaluateExpressionTree(nodeType<string>* p) {
+    if (p->lLink == nullptr && p->rLink == nullptr) {
+        return stod(p->info);
+    }
+    else {
+        double x = evaluateExpressionTree(p->lLink);
+        double y = evaluateExpressionTree(p->rLink);
+        double result = 0.0;
+        if()
+    }
 }
 double binaryExpressionTree::evaluateExpressionTree() {
     return evaluateExpressionTree(root);
