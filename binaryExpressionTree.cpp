@@ -117,7 +117,7 @@ void binaryExpressionTree::buildExpressionTree(string postfix) {
         cout << "Error - Stack is not empty" << endl;
         root = nullptr;
     }
-}
+} // prconditions : 
 
 void binaryExpressionTree::deleteNode(const string& string) {
     cout << "What am I doing";
